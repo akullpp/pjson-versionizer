@@ -1,0 +1,38 @@
+{
+  "name": "pjson-versionizer",
+  "version": "0.0.1",
+  "description": "Sets the versions of all dependencies inside the package.json to match the versions of the installed dependencies",
+  "keywords": [
+    "dependencies",
+    "npm",
+    "update",
+    "version"
+  ],
+  "homepage": "https://github.com/akullpp/pjson-versionizer",
+  "license": "MIT",
+  "author": "Andreas Kull <akullpp@gmail.com>",
+  "main": "./lib/pjson-versionizer",
+  "bin": {
+    "pjson-versionizer": "./bin/pjson-versionizer",
+    "pjv": "./bin/pjson-versionizer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akullpp/pjson-versionizer.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "commander": "^2.8.0",
+    "lodash": "^3.7.0",
+    "q": "^1.2.0",
+    "read-installed": "^4.0.0"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4"
+  },
+  "preferGlobal": true
+}
