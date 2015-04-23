@@ -1,6 +1,6 @@
 # pjson-versionizer
 
-* Working on a rewrite *
+**Working on a rewrite**
 
 [![npm stable version](https://img.shields.io/npm/v/pjson-versionizer.svg)](https://npmjs.org/package/pjson-versionizer) 
 
