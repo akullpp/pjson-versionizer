@@ -7,13 +7,11 @@ var expect = chai.expect;
 describe('versionize', function () {
 
     beforeEach(function () {
-        return fixture.createMockFs();
+        fixture.createMockFs();
     });
 
     afterEach(function () {
-        return fixture.removeMockFs().then(function (err) {
-            if (err) throw err;
-        });
+        fixture.removeMockFs();
     });
 
     it('should equalize devDependencies and dependencies if no flag is specified', function () {
@@ -25,18 +23,34 @@ describe('versionize', function () {
         });
     });
 
-    //it('should only equalize dependencies if --deps is set', function () {
-    //    return sut.versionize('.tmp', {deps: true}).then(function () {
-    //        return fixture.loadMockPjson().then(function (pjson) {
-    //            expect(pjson.dependencies.a).to.equal(fixture.pjsonDepA.version);
-    //            expect(pjson.devDependencies.b).to.equal(fixture.pjson.devDependencies.b);
-    //        });
-    //    });
-    //});
+    it('should only equalize dependencies if --deps is set', function () {
+        return sut.versionize('.tmp', {deps: true}).then(function () {
+            return fixture.loadMockPjson().then(function (pjson) {
+                expect(pjson.dependencies.a).to.equal(fixture.pjsonDepA.version);
+                expect(pjson.devDependencies.b).to.equal(fixture.pjson.devDependencies.b);
+            });
+        });
+    });
 
-    it('should only equalize devDependencies if --ddeps is set');
+    it('should only equalize devDependencies if --ddeps is set', function () {
+        return sut.versionize('.tmp', {ddeps: true}).then(function () {
+            return fixture.loadMockPjson().then(function (pjson) {
+                expect(pjson.dependencies.a).to.equal(fixture.pjson.dependencies.a);
+                expect(pjson.devDependencies.b).to.equal(fixture.pjsonDepB.version);
+            });
+        });
+    });
 
-    it('should use the semver prefix flag');
+    it('should use the semver prefix flag', function () {
+        var testPrefix = '~';
+
+        return sut.versionize('.tmp', {prefix: testPrefix}).then(function () {
+            return fixture.loadMockPjson().then(function (pjson) {
+                expect(pjson.dependencies.a).to.equal(testPrefix + fixture.pjsonDepA.version);
+                expect(pjson.devDependencies.b).to.equal(testPrefix + fixture.pjsonDepB.version);
+            });
+        });
+    });
 
     it('should throw an error if there is no package.json');
 

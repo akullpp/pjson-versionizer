@@ -21,41 +21,18 @@ var pjson = {
         version: '2.0.0'
     };
 
-function createDirectories() {
-    var promiseMkdir = Q.nfbind(fs.mkdir);
-
-    return promiseMkdir('.tmp')
-        .then(promiseMkdir('.tmp/node_modules')
-            .then(function () {
-                Q.all([
-                    promiseMkdir('.tmp/node_modules/b'),
-                    promiseMkdir('.tmp/node_modules/a')
-                ]);
-            }));
-}
-
-function createFiles() {
-    var promiseWriteFile = Q.nfbind(fs.writeFile);
-
-    return Q.all([
-        promiseWriteFile('.tmp/node_modules/b/package.json', JSON.stringify(pjsonDepB)),
-        promiseWriteFile('.tmp/package.json', JSON.stringify(pjson)),
-        promiseWriteFile('.tmp/node_modules/a/package.json', JSON.stringify(pjsonDepA))
-    ]);
-}
-
 function createMockFs() {
-    return createDirectories().then(function () {
-        return createFiles();
-    });
+    fs.mkdirSync('.tmp');
+    fs.mkdirSync('.tmp/node_modules');
+    fs.mkdirSync('.tmp/node_modules/b');
+    fs.mkdirSync('.tmp/node_modules/a');
+    fs.writeFileSync('.tmp/package.json', JSON.stringify(pjson));
+    fs.writeFileSync('.tmp/node_modules/a/package.json', JSON.stringify(pjsonDepA));
+    fs.writeFileSync('.tmp/node_modules/b/package.json', JSON.stringify(pjsonDepB));
 }
 
 function removeMockFs() {
-    var deferred = Q.defer();
-
-    rimraf('.tmp/', deferred.resolve);
-
-    return deferred.promise;
+    rimraf.sync('.tmp');
 }
 
 function loadMockPjson() {
