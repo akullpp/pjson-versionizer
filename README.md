@@ -1,5 +1,7 @@
 # pjson-versionizer
 
+**Working on a rewrite**
+
 [![npm stable version](https://img.shields.io/npm/v/pjson-versionizer.svg)](https://npmjs.org/package/pjson-versionizer) 
 
 Sets the versions of all dependencies in the `package.json` to match the versions of the installed dependencies located in the `node_modules`.
