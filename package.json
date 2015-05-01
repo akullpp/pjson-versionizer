@@ -1,6 +1,6 @@
 {
   "name": "pjson-versionizer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Sets the versions of all dependencies inside the package.json to match the versions of the installed dependencies",
   "keywords": [
     "dependencies",
