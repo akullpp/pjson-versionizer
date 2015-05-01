@@ -14,11 +14,11 @@ Sets the versions of all dependencies in the `package.json` to match the version
 
     Options:
 
-    -h, --help             output usage information
-    -V, --version          output the version number
-    -d, --deps             Only sets production dependencies
-    -dev, --ddeps          Only sets development dependencies
-    -p, --prefix [semver]  Semver prefix for all dependencies
+        -h, --help             output usage information
+        -V, --version          output the version number
+        -p, --deps             Only sets production dependencies
+        -d, --ddeps            Only sets development dependencies
+        -s, --prefix [semver]  Semver prefix for all dependencies
 
 ## Motivation
 
