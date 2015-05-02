@@ -1,8 +1,7 @@
 var chai = require('chai'),
+    fixture = require('./fixture'),
     sut = require('../lib/versionize'),
-    fixture = require('./fixture');
-
-var expect = chai.expect;
+    expect = chai.expect;
 
 describe('versionize', function () {
 
@@ -15,7 +14,7 @@ describe('versionize', function () {
     });
 
     it('should equalize devDependencies and dependencies if no flag is specified', function () {
-        return sut.versionize('.tmp', {}).then(function () {
+        return sut('.tmp', {}).then(function () {
             return fixture.loadMockPjson().then(function (pjson) {
                 expect(pjson.dependencies.a).to.equal(fixture.pjsonDepA.version);
                 expect(pjson.devDependencies.b).to.equal(fixture.pjsonDepB.version);
@@ -24,7 +23,7 @@ describe('versionize', function () {
     });
 
     it('should only equalize dependencies if --deps is set', function () {
-        return sut.versionize('.tmp', {deps: true}).then(function () {
+        return sut('.tmp', {deps: true}).then(function () {
             return fixture.loadMockPjson().then(function (pjson) {
                 expect(pjson.dependencies.a).to.equal(fixture.pjsonDepA.version);
                 expect(pjson.devDependencies.b).to.equal(fixture.pjson.devDependencies.b);
@@ -33,7 +32,7 @@ describe('versionize', function () {
     });
 
     it('should only equalize devDependencies if --ddeps is set', function () {
-        return sut.versionize('.tmp', {ddeps: true}).then(function () {
+        return sut('.tmp', {ddeps: true}).then(function () {
             return fixture.loadMockPjson().then(function (pjson) {
                 expect(pjson.dependencies.a).to.equal(fixture.pjson.dependencies.a);
                 expect(pjson.devDependencies.b).to.equal(fixture.pjsonDepB.version);
@@ -44,7 +43,7 @@ describe('versionize', function () {
     it('should use the semver prefix flag', function () {
         var testPrefix = '~';
 
-        return sut.versionize('.tmp', {prefix: testPrefix}).then(function () {
+        return sut('.tmp', {prefix: testPrefix}).then(function () {
             return fixture.loadMockPjson().then(function (pjson) {
                 expect(pjson.dependencies.a).to.equal(testPrefix + fixture.pjsonDepA.version);
                 expect(pjson.devDependencies.b).to.equal(testPrefix + fixture.pjsonDepB.version);
