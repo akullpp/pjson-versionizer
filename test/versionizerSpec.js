@@ -52,6 +52,15 @@ describe('versionize', function () {
         });
     });
 
+    it('should not write the changes if the try flag is set', function () {
+        return sut('.tmp', {try: true}).then(function () {
+            return fixture.loadMockPjson().then(function (pjson) {
+                expect(pjson.dependencies.a).to.equal(fixture.pjson.dependencies.a);
+                expect(pjson.devDependencies.b).to.equal(fixture.pjson.devDependencies.b);
+            });
+        });
+    });
+
     it('should throw an error if there is no package.json');
 
     it('should throw an error if there are no installed modules');
