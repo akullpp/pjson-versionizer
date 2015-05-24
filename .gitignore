@@ -1,0 +1,22 @@
+# Mac
+.DS_Store
+
+# IDE
+.idea/
+
+# Node
+node_modules/
+npm-debug.log
+
+# Bower
+bower_components/
+
+# Distribution
+build/
+server/dist/
+
+# Documentation
+docs/
+
+# Temporary
+.tmp/
