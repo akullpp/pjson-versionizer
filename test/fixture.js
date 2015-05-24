@@ -1,25 +1,25 @@
 'use strict';
 
-var Q = require('q'),
-    fs = require('fs'),
-    rimraf = require('rimraf');
+var fs = require('fs');
+var Promise = require('bluebird');
+var rimraf = require('rimraf');
 
 var pjson = {
-        dependencies: {
-            a: '*'
-        },
-        devDependencies: {
-            b: '*'
-        }
+    dependencies: {
+        a: '*'
     },
-    pjsonDepA = {
-        name: 'a',
-        version: '1.0.0'
-    },
-    pjsonDepB = {
-        name: 'b',
-        version: '2.0.0'
-    };
+    devDependencies: {
+        b: '*'
+    }
+};
+var pjsonDepA = {
+    name: 'a',
+    version: '1.0.0'
+};
+var pjsonDepB = {
+    name: 'b',
+    version: '2.0.0'
+};
 
 function createMockFs() {
     fs.mkdirSync('.tmp');
@@ -36,7 +36,7 @@ function removeMockFs() {
 }
 
 function loadMockPjson() {
-    var promiseReadFile = Q.nfbind(fs.readFile);
+    var promiseReadFile = Promise.promisify(fs.readFile);
 
     return promiseReadFile('.tmp/package.json').then(JSON.parse);
 }

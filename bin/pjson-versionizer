@@ -1,3 +1,5 @@
 #!/usr/bin/env node
 
-require('../lib/pjson-versionizer');
+'use strict';
+
+require('../lib/index');
