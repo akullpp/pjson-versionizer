@@ -10,16 +10,16 @@ Sets the versions of all dependencies in the `package.json` to match the version
 
 ## Usage
 
-    pjv [options]
+  pjv [options]
 
     Options:
 
-        -h, --help             Output usage information
-        -V, --version          Output the version number
-        -t, --try              Only logs to console
-        -p, --deps             Only sets production dependencies
-        -d, --ddeps            Only sets development dependencies
-        -s, --prefix [semver]  Semver prefix for all dependencies
+      -h, --help         output usage information
+      -V, --version      output the version number
+      --ddeps            Only sets development dependencies
+      --deps             Only sets production dependencies
+      --prefix [semver]  Semver prefix for all dependencies
+      --dry              Only logs to console
 
 ## Motivation
 
