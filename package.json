@@ -32,8 +32,11 @@
   },
   "devDependencies": {
     "chai": "~2.3.0",
-    "mocha": "~2.2.4",
-    "rimraf": "~2.3.3"
-  },
-  "preferGlobal": true
+    "gulp": "~3.8.11",
+    "gulp-eslint": "~0.12.0",
+    "gulp-load-plugins": "~0.10.0",
+    "gulp-mocha": "~2.1.0",
+    "mocha": "~2.2.5",
+    "rimraf": "~2.3.4"
+  }
 }
