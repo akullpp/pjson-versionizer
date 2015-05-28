@@ -10,7 +10,7 @@ Sets the versions of all dependencies in the `package.json` to match the version
 
 ## Usage
 
-  pjv [options]
+    pjv [options]
 
     Options:
 

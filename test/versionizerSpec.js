@@ -53,7 +53,7 @@
             });
         });
 
-        it('should not write the changes if the try flag is set', function () {
+        it('should not write the changes if the dry flag is set', function () {
             return sut('.tmp', {dry: true}).then(function () {
                 return fixture.loadMockPjson().then(function (pjson) {
                     expect(pjson.dependencies.a).to.equal(fixture.pjson.dependencies.a);
